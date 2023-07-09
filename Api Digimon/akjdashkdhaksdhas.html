@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema de Comida Rápida</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+</head>
+<body style="font-family: Open Sans;">
+  <style>
+    
+    body{
+      background-color: rgb(244, 244, 17);
+    }
+    nav {
+        background-color: red; /* Color de fondo rojo */
+        padding: 20px; /* Espaciado interno */
+    }
+    
+    /* Estilos para la lista del navbar */
+    ul {
+        list-style-type: none; /* Sin viñetas */
+        margin: 0; /* Sin margen */
+        padding: 0; /* Sin espaciado interno */
+        display: flex; /* Mostrar elementos en línea */
+    }
+
+    /* Estilos para los elementos de la lista del navbar */
+    li {
+        margin-right: 10px; /* Margen derecho entre elementos */
+    }
+
+    /* Estilos para los enlaces del navbar */
+    li a {
+        color: white; /* Color del texto blanco */
+        text-decoration: none; /* Sin subrayado */
+        padding: 5px; /* Espaciado interno */
+    }
+
+    .card-shadow {
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.29); /* Cambiar los valores de la sombra según sea necesario */
+    }
+</style>
+
+<nav>
+  <ul>
+      <li><a href="#">Inicio</a></li>
+      <li><a href="#">Acerca de</a></li>
+      <li><a href="#">Servicios</a></li>
+      <li><a href="#">Contacto</a></li>
+  </ul>
+</nav>
+
+<div class="card card-shadow container">
+  <div class="card-body">
+    <div class="container">
+      <div class="card container">
+        <div class="card-body">
+      <h1>Menú de Comida Rápida</h1>
+        </div>
+      </div>
+      <div class="row mt-4">
+          <div class="col-md-6">
+            <div class="card card-shadow container">
+              <div class="card-body">
+              <h3 class="mb-3">Seleccione su Pedido</h3>
+              <ul id="menuItems" class="list-group">
+                <li class="list-group-item d-flex align-items-center" data-name="Hamburguesa" data-price="10">
+                  <img src="https://conchaytoro.com/content/uploads/2022/05/HAMBURGUESA-CLA%CC%81SICA.png" alt="Hamburguesa" class="mr-3" width="100px">
+                  Hamburguesa - $10
+              </li>
+              <li class="list-group-item d-flex align-items-center" data-name="Pizza" data-price="8">
+                  <img src="https://conchaytoro.com/content/uploads/2022/05/HAMBURGUESA-CLA%CC%81SICA.png" alt="Pizza" class="mr-3" width="100px">
+                  Pizza - $8
+              </li>
+              <li class="list-group-item d-flex align-items-center" data-name="Hot Dog" data-price="5">
+                  <img src="https://conchaytoro.com/content/uploads/2022/05/HAMBURGUESA-CLA%CC%81SICA.png" alt="Hot Dog" class="mr-3" width="100px">
+                  Hot Dog - $5
+              </li>
+          </ul>
+          </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card container">
+              <div class="card-body">
+              <h3 class="mb-3">Carro de Compras</h3>
+              <ul id="cartItems" class="list-group">
+                <ul id="cartItems" class="list-group">
+                  <li class="list-group-item">No hay elementos en el carro</li>
+              </ul>
+              <hr>
+           
+              <h4>Total: <span id="cartTotal">$0</span></h4>
+              <button id="checkoutBtn" class="btn btn-primary mt-3">Realizar Pedido</button>
+          </div>
+      </div>
+          </div>
+      </div>
+  </div>
+  
+  <br><br>
+  <form id="orderForm" class="container">
+    <div class="card container">
+      <div class="card-body">
+    <h3 class="mb-3">Ingresa tus datos</h3>
+    
+     
+    <div class="form-group">
+        <label for="nameInput">Nombre</label>
+        <input type="text" class="form-control" id="nameInput" required>
+    </div>
+    <div class="form-group">
+        <label for="phoneInput">Número de Celular</label>
+        <input type="tel" class="form-control" id="phoneInput" required>
+    </div>
+    <div class="form-group">
+        <label for="emailInput">Correo</label>
+        <input type="email" class="form-control" id="emailInput" required>
+    </div>
+    <div class="form-group">
+        <label for="paymentSelect">Forma de Pago</label>
+        <select class="form-control" id="paymentSelect" required>
+            <option value="efectivo">Efectivo</option>
+            <option value="tarjeta">Tarjeta de Crédito/Debito</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Realizar Pedido</button>
+  </form>
+</div>
+</div>
+  
+  
+    
+      </div>
+  </div>
+  </div>
+</div>
+
+  
+
+
+   
+<script>
+  const menuItems = document.getElementById('menuItems');
+  const cartItems = document.getElementById('cartItems');
+  const cartTotal = document.getElementById('cartTotal');
+  const checkoutBtn = document.getElementById('checkoutBtn');
+
+  let cart = [];
+  let total = 0;
+
+  // Función para actualizar el carrito de compras
+  function updateCart() {
+    cartItems.innerHTML = '';
+    cart.forEach(item => {
+      const li = document.createElement('li');
+      li.className = 'list-group-item d-flex justify-content-between align-items-center';
+      li.innerHTML = `
+        <span>${item.name} - $${item.price}</span>
+        <button class="btn btn-danger btn-sm removeBtn" data-id="${item.id}">Eliminar</button>
+      `;
+      cartItems.appendChild(li);
+    });
+
+    cartTotal.textContent = `$${total}`;
+  }
+
+  // Función para agregar un item al carrito
+  function addToCart(name, price) {
+    const item = {
+      id: Date.now(),
+      name,
+      price
+    };
+    cart.push(item);
+    total += price;
+    updateCart();
+  }
+
+  // Función para eliminar un item del carrito
+  function removeFromCart(id) {
+    const item = cart.find(item => item.id === id);
+    if (item) {
+      cart = cart.filter(item => item.id !== id);
+      total -= item.price;
+      updateCart();
+    }
+  }
+
+  // Evento click en el menú de comida rápida
+  menuItems.addEventListener('click', (e) => {
+    if (e.target.classList.contains('list-group-item')) {
+      const name = e.target.getAttribute('data-name');
+      const price = parseInt(e.target.getAttribute('data-price'));
+      addToCart(name, price);
+    }
+  });
+
+  // Evento click en el botón de eliminar del carrito
+  cartItems.addEventListener('click', (e) => {
+    if (e.target.classList.contains('removeBtn')) {
+      const id = parseInt(e.target.getAttribute('data-id'));
+      removeFromCart(id);
+    }
+  });
+
+  // Evento click en el botón de realizar pedido
+  checkoutBtn.addEventListener('click', () => {
+    // Realizar lógica de finalizar pedido, por ejemplo, enviar el formulario
+    // con los datos del cliente y los items del carrito al servidor
+    const customerName = document.getElementById('customerName').value;
+    const customerEmail = document.getElementById('customerEmail').value;
+    const customerPhone = document.getElementById('customerPhone').value;
+
+    // Verificar si los campos del cliente están vacíos
+    if (!customerName || !customerEmail || !customerPhone) {
+      alert('Por favor, complete todos los campos del cliente.');
+      return;
+    }
+
+    // Crear objeto de pedido con los datos del cliente y el carrito
+    const order = {
+      customerName,
+      customerEmail,
+      customerPhone,
+      items: cart
+    };
+
+    // Enviar el pedido al servidor
+    axios.post('/api/orders', order)
+      .then(response => {
+        // Luego de recibir la respuesta del servidor, puedes reiniciar el carrito
+        cart = [];
+        total = 0;
+        updateCart();
+        alert('¡Pedido realizado con éxito!');
+      })
+      .catch(error => {
+        console.error(error);
+        alert('Error al realizar pedido. Por favor, intenta nuevamente.');
+      });
+  });
+
+</script>
+  
+</body>
+</html>
+
+
+
+
+
+
+  

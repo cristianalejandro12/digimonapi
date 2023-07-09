@@ -1,0 +1,249 @@
+.card {
+    opacity: 0;
+    transform: translateY(20px); 
+    transition: opacity 0.6s ease-in-out, transform 0.3s ease-in-out;
+    background-image: url();
+    background-size: cover;
+    background-color: rgba(253, 219, 250, 0.695);
+    border-radius: 29px;
+    height: 430px;
+    width: 330px;
+
+}
+
+
+.card.loaded {
+    opacity: 2.4; 
+    transform: translateY(0);
+}
+
+.card-img-top {
+    transition: opacity 0.5s ease-in-out, transform 0.3s ease-in-out;
+    border-radius: 30px;
+}
+
+.digimon-level {
+  margin-top: -0px; 
+  font-family: 'Montserrat';
+}
+.ventanaEmergente {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #f9f9f9;
+    color: #333;
+    padding: 5px;
+    font-size: 12px;
+    white-space: nowrap;
+    transition: opacity 0.3s, visibility 0.3s;
+    margin-left: 50px;
+    font-family: Montserrat;
+  }
+  
+  nav a:hover .ventanaEmergente {
+    opacity: 1;
+    visibility: visible;
+  }
+
+
+  .card:hover .card-img-top {
+      transform: scale(1.05); 
+  }
+
+  .inputt {
+      opacity: 0; 
+      animation: fadeIn 0.5s ease-in forwards; 
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0; 
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  input{
+      text-transform: capitalize;
+  }
+
+  body{
+      background-image: url(wallpaper.jpg_large);
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-color: rgb(254, 253, 253);
+    
+  }
+
+  .zoom {
+      transition: transform 0.3s ease-in-out; 
+  }
+  
+  .zoom:hover {
+    transform: scale(1.08); 
+  }
+
+
+
+  #searchButton {
+
+      background-color: rgb(233, 190, 229);
+    
+      color: white;
+      font-size: 16px;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+  }
+
+
+#searchButton:hover {
+    background-color: rgb(225, 169, 222);
+}
+   
+.navbar {
+  
+    font-family: 'Montserrat';
+    
+    background-color: rgba(246, 205, 242, 0.736);
+    transition: background-color 0.3s ease-in-out; 
+    
+}
+
+
+   
+  
+  
+  
+.navbar.transparent {
+    background-color: transparent !important; 
+    box-shadow: none; 
+}
+
+
+
+
+
+.digimon-item {
+    width: 200px;
+    height: 250px;
+    margin: 7px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #f6ceed9d;
+    border: 1.4px solid #edb2e7b4;
+    border-radius: 29px;
+    opacity: 0;
+    
+    
+    
+  }
+
+  .digimon-item img {
+    max-width: 140px;
+    max-height: 140px;
+  }
+
+
+  #allDigimonsRow {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .digimon-item h5 {
+    margin-top: 10px;
+    font-size: 21px; 
+    font-family: Montserrat, sans-serif; 
+    color: #e47fda;
+   
+    text-shadow: 2px 2px 4px rgba(96, 9, 96, 0.1);
+  }
+
+  .digimon-item img {
+    border-radius: 24px;
+
+  }
+
+  .digimon-item p {
+    font-size: 16px; 
+    font-family: Anuphan, sans-serif; 
+  }
+
+  .expanded-card {
+    
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    padding: 15px;
+    background-color: #ffffff;
+    font-family: Montserrat, sans-serif; 
+    border-radius: 25px;
+    color: #e168d5;
+    position: fixed; 
+    z-index: 10000;
+    opacity: 0;
+    border: 2px solid #f6c7f186;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.30);
+    
+    
+  }
+
+  .expanded-card.show {
+    opacity: 1;
+  }
+
+
+  
+  .show {
+    opacity: 1;
+  }
+
+
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.552); 
+    z-index: 9999; 
+    display: none; 
+  }
+
+  @media (max-width: 480px) {
+    #logodigi {
+      width: 155px; 
+      height: 120px; 
+
+    }
+
+    #digimonlogo{
+
+      height: 130px;
+      width: 200px;
+      margin-top: -10px;
+    }
+
+    .input-group{
+
+      width: 362px;
+    }
+
+    #logonav{
+      width: 46px;
+      height: 34px;
+
+    }
+
+  }
+
